@@ -1,14 +1,31 @@
 package com.fantasy.store.v2.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "manufacturers")
 public class Manufacturer {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "name")
     private String manufacturerName;
+    @Column(name = "specialty")
     private String speciality;
+
+    @OneToOne(mappedBy = "manufacturer")
+    ProductType productType;
 
     public Manufacturer(String manufacturerName, String speciality) {
         this.manufacturerName = manufacturerName;
         this.speciality = speciality;
+    }
+
+    public Manufacturer() {
+
     }
 
     public Long getId() {
@@ -27,6 +44,7 @@ public class Manufacturer {
         this.manufacturerName = manufacturerName;
     }
 
+
     public String getSpeciality() {
         return this.speciality;
     }
@@ -34,4 +52,12 @@ public class Manufacturer {
     public void setSpeciality(String speciality) {
         this.speciality = speciality;
     }
+
+//    public ProductType getProductType() {
+//        return productType;
+//    }
+//
+//    public void setProductType(ProductType productType) {
+//        this.productType = productType;
+//    }
 }

@@ -9,14 +9,19 @@ import static org.junit.Assert.assertEquals;
 public class ProductTests {
 
     Product swordProduct;
-    Product healthPotion;
-    Product leatherArmor;
+    ProductType weapons;
+    ProductType potions;
+    Manufacturer blacksmith;
+    Manufacturer alchemist;
 
     @Before
     public void before() {
-        swordProduct = new Product("Bronze Sword", "Low quality sword", 250.00, 300.00);
-        healthPotion = new Product("Health Potion", "Heal wounds", 25.00, 50.00);
-        leatherArmor = new Product("Leather Armor", "High mobility, low defense set of armor", 400.00, 500.00);
+        blacksmith = new Manufacturer("Blacksmith", "Blacksmith");
+        alchemist = new Manufacturer("Wise Old Sage", "Alchemist");
+        weapons = new ProductType("Weapons", blacksmith);
+        potions = new ProductType("Potions", alchemist);
+        swordProduct = new Product("Bronze Sword", "Low quality sword", 250.00, 300.00, weapons);
+
     }
 
     @Test
@@ -63,4 +68,16 @@ public class ProductTests {
         swordProduct.setPrice(350.00);
         assertEquals(350.00, swordProduct.getPrice(), 0.00);
     }
+
+    @Test
+    public void canGetProductTypeFromProduct(){
+        assertEquals(weapons, swordProduct.getProductType());
+    }
+
+    @Test
+    public void canChangeProductTypeOnProduct(){
+        swordProduct.setProductType(potions);
+        assertEquals(potions, swordProduct.getProductType());
+    }
+
 }
