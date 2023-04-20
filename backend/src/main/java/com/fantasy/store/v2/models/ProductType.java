@@ -4,9 +4,11 @@ public class ProductType {
 
     private Long id;
     private String typeName;
+    private Manufacturer manufacturer;
 
-    public ProductType(String typeName) {
+    public ProductType(String typeName, Manufacturer manufacturer) {
         this.typeName = typeName;
+        this.manufacturer = manufacturer;
     }
 
     public Long getId() {
@@ -23,5 +25,13 @@ public class ProductType {
 
     public void setTypeName(String typeName) {
         this.typeName = typeName;
+    }
+
+    public Manufacturer getManufacturer() {
+        return this.manufacturer;
+    }
+
+    public void setManufacturer(Manufacturer manufacturer) {
+        this.manufacturer = manufacturer;
     }
 }

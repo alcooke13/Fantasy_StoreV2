@@ -11,11 +11,15 @@ public class ProductTests {
     Product swordProduct;
     ProductType weapons;
     ProductType potions;
+    Manufacturer blacksmith;
+    Manufacturer alchemist;
 
     @Before
     public void before() {
-        weapons = new ProductType("Weapons");
-        potions = new ProductType("Potions");
+        blacksmith = new Manufacturer("Blacksmith", "Blacksmith");
+        alchemist = new Manufacturer("Wise Old Sage", "Alchemist");
+        weapons = new ProductType("Weapons", blacksmith);
+        potions = new ProductType("Potions", alchemist);
         swordProduct = new Product("Bronze Sword", "Low quality sword", 250.00, 300.00, weapons);
 
     }

@@ -25,4 +25,15 @@ public class ManufacturerTests {
         assertEquals("Armorsmith", manufacturer1.getManufacturerName());
     }
 
+    @Test
+    public void canGetManufacturerSpecialty(){
+        assertEquals("Alchemist", manufacturer1.getSpeciality());
+    }
+
+    @Test
+    public void canSetManufacturerSpecialty(){
+        manufacturer1.setSpeciality("Blacksmith");
+        assertEquals("Blacksmith", manufacturer1.getSpeciality());
+    }
+
 }
