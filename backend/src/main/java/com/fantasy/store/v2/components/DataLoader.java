@@ -49,10 +49,12 @@ public class DataLoader implements ApplicationRunner {
         productTypeRepository.save(armor);
 
         Product productBronzeSword = new Product("Bronze Sword", "Low Quality Sword", 300.00, 350.00, weapons);
+        Product productSilverSword = new Product("Silver Sword", "Medium Quality Sword", 400.00, 475.00, weapons);
         Product productHealthPotion = new Product("Health Potion", "Cures wounds", 25.00, 50.00, potions);
         Product productLeatherArmor = new Product("Leather Armor Set", "Set of low defense, high manouverability armor", 500.00, 600.00, armor);
 
         productRepository.save(productBronzeSword);
+        productRepository.save(productSilverSword);
         productRepository.save(productHealthPotion);
         productRepository.save(productLeatherArmor);
     }
