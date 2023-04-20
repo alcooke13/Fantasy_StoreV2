@@ -1,12 +1,27 @@
 package com.fantasy.store.v2.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "products")
 public class Product {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "name")
     private String productName;
+    @Column(name = "description")
     private String description;
+    @Column(name = "cost")
     private Double cost;
+    @Column(name = "price")
     private Double price;
+    @JsonBackReference
+    @ManyToOne
+    @JoinColumn(name = "product_type_id", nullable = false)
     private ProductType productType;
 
     public Product(String productName, String description, Double cost, Double price, ProductType productType) {
@@ -16,7 +31,9 @@ public class Product {
         this.price = price;
         this.productType = productType;
 
+    }
 
+    public Product() {
     }
 
     public Long getId() {
