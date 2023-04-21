@@ -1,5 +1,6 @@
 package com.fantasy.store.v2.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -16,11 +17,11 @@ public class ProductType {
     private Long id;
     @Column(name = "name")
     private String typeName;
-    @OneToOne(cascade = CascadeType.MERGE)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "manufacturer_id")
     private Manufacturer manufacturer;
 
-    @OneToMany(mappedBy = "productType")
+    @OneToMany(mappedBy = "productType", cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<Product> products;
 
