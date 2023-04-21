@@ -53,11 +53,11 @@ public class Manufacturer {
         this.speciality = speciality;
     }
 
-//    public ProductType getProductType() {
-//        return productType;
-//    }
-//
-//    public void setProductType(ProductType productType) {
-//        this.productType = productType;
-//    }
+    public ProductType getProductType() {
+        return productType;
+    }
+
+    public void setProductType(ProductType productType) {
+        this.productType = productType;
+    }
 }
