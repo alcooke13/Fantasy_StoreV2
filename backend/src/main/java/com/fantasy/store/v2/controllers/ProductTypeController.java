@@ -18,7 +18,6 @@ public class ProductTypeController {
     @GetMapping(value = "/product_types")
     public ResponseEntity<List<ProductType>> getAllTypes() {
         return new ResponseEntity<>(productTypeRepository.findAll(), HttpStatus.OK);
-
     }
 
     @GetMapping(value = "/product_types/{id}")
