@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Button from "./components/Button";
 import { getProductTypes } from "./services/ProductTypeServices";
+import MainContainer from "./containers/MainContainer";
 
 
 function App() {
@@ -15,18 +15,10 @@ function App() {
     gettingProductTypes();
 
   }, []);
-  
-  const items = productData.map((item) => {
-    return <li key={item.id}>{item.typeName}</li>
-  })
 
   return (
     <div className="App">
-      <h1>TESTING</h1>
-      <ul>
-        {items}
-      </ul>
-      <Button>Does This WORK</Button>
+      <MainContainer/>
     </div>
   );
 }
