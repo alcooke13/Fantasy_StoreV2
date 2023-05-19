@@ -3,15 +3,32 @@ import styled from 'styled-components';
 import NavBar from '../components/NavBar';
 import ListContainer from './ListContainer';
 import image from '../images/potions_header.png'
+import { useEffect, useState } from "react";
+import {getProductTypes} from '../services/ProductTypeServices'
+import { getProducts } from '../services/ProductServices';
+
 
 function MainContainer() {
+  const [productData, setProductData] = useState([]);
+  useEffect(() => {
+  
+    const gettingProductTypes = async () => {
+      const allProductTypes = await getProducts();
+      setProductData(allProductTypes);
+    }
+  
+    gettingProductTypes();
+
+  }, []);
+  
+  
   return (
     <Main>
         <Header>
             <h1>Ali's Fantasy Shop</h1>
         </Header>
         <NavBar/>
-         <ListContainer/>
+         <ListContainer allProducts = {productData}/>
     </Main>
   )
 };

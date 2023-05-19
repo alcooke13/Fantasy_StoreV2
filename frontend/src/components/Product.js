@@ -1,264 +1,27 @@
 import React from 'react'
 import styled from 'styled-components';
+import bronzeSwordImage from '../images/bronze_sword_pic.webp'
 
-function Product() {
-  return (
-    <>
-    
-    <Li>
-        <BoxContainer>
-            <h3>Product Name</h3>
-            <div>
-                Cost: 500
-            </div>
-            <div>
-                Price: 750
-            </div>
-            <div>
-                Type: Weapon
-            </div>
-            <div>
-                IMAGE
-            </div>
-            
-        </BoxContainer>
-    </Li>
-    <Li>
-        <BoxContainer>
-            <h3>Product Name</h3>
-            <div>
-                Cost: 500
-            </div>
-            <div>
-                Price: 750
-            </div>
-            <div>
-                Type: Weapon
-            </div>
-            <div>
-                IMAGE
-            </div>
-            
-        </BoxContainer>
-    </Li>
-    <Li>
-        <BoxContainer>
-            <h3>Product Name</h3>
-            <div>
-                Cost: 500
-            </div>
-            <div>
-                Price: 750
-            </div>
-            <div>
-                Type: Weapon
-            </div>
-            <div>
-                IMAGE
-            </div>
-            
-        </BoxContainer>
-    </Li>
-    <Li>
-        <BoxContainer>
-            <h3>Product Name</h3>
-            <div>
-                Cost: 500
-            </div>
-            <div>
-                Price: 750
-            </div>
-            <div>
-                Type: Weapon
-            </div>
-            <div>
-                IMAGE
-            </div>
-            
-        </BoxContainer>
-    </Li>
-    <Li>
-        <BoxContainer>
-            <h3>Product Name</h3>
-            <div>
-                Cost: 500
-            </div>
-            <div>
-                Price: 750
-            </div>
-            <div>
-                Type: Weapon
-            </div>
-            <div>
-                IMAGE
-            </div>
-            
-        </BoxContainer>
-    </Li>
-    <Li>
-        <BoxContainer>
-            <h3>Product Name</h3>
-            <div>
-                Cost: 500
-            </div>
-            <div>
-                Price: 750
-            </div>
-            <div>
-                Type: Weapon
-            </div>
-            <div>
-                IMAGE
-            </div>
-            
-        </BoxContainer>
-    </Li>
-    <Li>
-        <BoxContainer>
-            <h3>Product Name</h3>
-            <div>
-                Cost: 500
-            </div>
-            <div>
-                Price: 750
-            </div>
-            <div>
-                Type: Weapon
-            </div>
-            <div>
-                IMAGE
-            </div>
-            
-        </BoxContainer>
-    </Li>
-    <Li>
-        <BoxContainer>
-            <h3>Product Name</h3>
-            <div>
-                Cost: 500
-            </div>
-            <div>
-                Price: 750
-            </div>
-            <div>
-                Type: Weapon
-            </div>
-            <div>
-                IMAGE
-            </div>
-            
-        </BoxContainer>
-    </Li>
-    <Li>
-        <BoxContainer>
-            <h3>Product Name</h3>
-            <div>
-                Cost: 500
-            </div>
-            <div>
-                Price: 750
-            </div>
-            <div>
-                Type: Weapon
-            </div>
-            <div>
-                IMAGE
-            </div>
-            
-        </BoxContainer>
-    </Li>
-    <Li>
-        <BoxContainer>
-            <h3>Product Name</h3>
-            <div>
-                Cost: 500
-            </div>
-            <div>
-                Price: 750
-            </div>
-            <div>
-                Type: Weapon
-            </div>
-            <div>
-                IMAGE
-            </div>
-            
-        </BoxContainer>
-    </Li>
-    <Li>
-        <BoxContainer>
-            <h3>Product Name</h3>
-            <div>
-                Cost: 500
-            </div>
-            <div>
-                Price: 750
-            </div>
-            <div>
-                Type: Weapon
-            </div>
-            <div>
-                IMAGE
-            </div>
-            
-        </BoxContainer>
-    </Li>
-    <Li>
-        <BoxContainer>
-            <h3>Product Name</h3>
-            <div>
-                Cost: 500
-            </div>
-            <div>
-                Price: 750
-            </div>
-            <div>
-                Type: Weapon
-            </div>
-            <div>
-                IMAGE
-            </div>
-            
-        </BoxContainer>
-    </Li>
-    <Li>
-        <BoxContainer>
-            <h3>Product Name</h3>
-            <div>
-                Cost: 500
-            </div>
-            <div>
-                Price: 750
-            </div>
-            <div>
-                Type: Weapon
-            </div>
-            <div>
-                IMAGE
-            </div>
-            
-        </BoxContainer>
-    </Li>
-    <Li>
-        <BoxContainer>
-            <h3>Product Name</h3>
-            <div>
-                Cost: 500
-            </div>
-            <div>
-                Price: 750
-            </div>
-            <div>
-                Type: Weapon
-            </div>
-            <div>
-                IMAGE
-            </div>
-            
-        </BoxContainer>
-    </Li>
 
-    </>
+function Product({product}) {
+  
+    return (  
+    <Li>
+        <BoxContainer>
+            <h3>{product.productName}</h3>
+            <div>
+                Cost: {product.cost}
+            </div>
+            <div>
+                Price: {product.price}
+            </div>
+            <div>
+                Markup : {Math.round((product.price - product.cost) / product.cost * 100)}%
+            </div>
+            {product.productName === "Bronze Sword" ? <Img src={bronzeSwordImage} alt='Picture of Bronze Sword'/> : ""}
+        
+        </BoxContainer>
+    </Li>
   )
 };
 
@@ -274,6 +37,12 @@ const Li = styled.li`
 `
 
 const BoxContainer = styled.div`
+`
+
+
+const Img = styled.img`
+    max-width: 100px;
+    max-height: 100px;
 `
 
 export default Product;
