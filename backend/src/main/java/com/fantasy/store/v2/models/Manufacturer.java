@@ -1,5 +1,7 @@
 package com.fantasy.store.v2.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,6 +19,7 @@ public class Manufacturer {
     private String speciality;
 
     @OneToOne(mappedBy = "manufacturer")
+    @JsonManagedReference
     ProductType productType;
 
     public Manufacturer(String manufacturerName, String speciality) {

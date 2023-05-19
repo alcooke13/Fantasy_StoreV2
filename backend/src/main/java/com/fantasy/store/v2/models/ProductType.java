@@ -1,5 +1,6 @@
 package com.fantasy.store.v2.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -17,6 +18,7 @@ public class ProductType {
     @Column(name = "name")
     private String typeName;
     @OneToOne(cascade = CascadeType.MERGE)
+    @JsonBackReference
     @JoinColumn(name = "manufacturer_id")
     private Manufacturer manufacturer;
 
