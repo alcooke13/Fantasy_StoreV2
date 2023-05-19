@@ -2,10 +2,15 @@ import React from 'react'
 import styled from 'styled-components'
 import Product from '../components/Product';
 
-function ListContainer() {
+function ListContainer({allProducts}) {
+    const productList = allProducts.map((product, index) => {
+        return <Product key={index} product = {product}/>
+    })
+    
+    
     return (
             <ProductContainer>
-                <Product/>
+                {productList}
             </ProductContainer>
   )
 };
