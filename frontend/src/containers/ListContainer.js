@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import Product from '../components/Product';
 
-function ListContainer({allProducts}) {
-    const [view, setView] = useState("all");
+function ListContainer({allProducts, view, setView}) {
+    // const [view, setView] = useState("all");
     const [chosenProduct, setChosenProduct] = useState({});
 
 

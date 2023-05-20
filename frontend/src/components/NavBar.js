@@ -1,11 +1,13 @@
 import React from 'react'
 import styled from 'styled-components';
 
-function NavBar() {
+function NavBar({view, setView}) {
+  
+  
   return (
         <Nav>
             <NavContainer>
-                <li>All Products</li>
+                <li onClick={() => setView("all")}>All Products</li>
                 <li>Weapons</li>
                 <li>Potions</li>
                 <li>Armour</li>

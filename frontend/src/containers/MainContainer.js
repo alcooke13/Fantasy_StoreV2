@@ -10,6 +10,7 @@ import { getProducts } from '../services/ProductServices';
 
 function MainContainer() {
   const [productData, setProductData] = useState([]);
+  const [view, setView] = useState("all");
   useEffect(() => {
   
     const gettingProductTypes = async () => {
@@ -27,8 +28,8 @@ function MainContainer() {
         <Header>
             <h1>Ali's Fantasy Shop</h1>
         </Header>
-        <NavBar/>
-         <ListContainer allProducts = {productData}/>
+        <NavBar setView = {setView} view ={view}/>
+         <ListContainer allProducts = {productData} setView = {setView} view ={view}/>
     </Main>
   )
 };
