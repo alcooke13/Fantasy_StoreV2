@@ -4,17 +4,29 @@ import NavBar from '../components/NavBar';
 import ListContainer from './ListContainer';
 import image from '../images/potions_header.png'
 import { useEffect, useState } from "react";
-import {getProductTypes} from '../services/ProductTypeServices'
+import {getArmors, getPotions, getProductTypes, getWeapons} from '../services/ProductTypeServices'
 import { getProducts } from '../services/ProductServices';
 
 
 function MainContainer() {
   const [productData, setProductData] = useState([]);
+  const [weaponsData, setWeaponsData] = useState([]);
+  const [potionsData, setPotionsData] = useState([]);
+  const [armoursData, setArmoursData] = useState([]);
+  const [view, setView] = useState("all");
   useEffect(() => {
   
     const gettingProductTypes = async () => {
       const allProductTypes = await getProducts();
+      const onlyWeaponTypes = await getWeapons();
+      const onlyPotions = await getPotions();
+      const onlyArmour = await getArmors();
+
       setProductData(allProductTypes);
+      setWeaponsData(onlyWeaponTypes.products);
+      setPotionsData(onlyPotions.products);
+      setArmoursData(onlyArmour.products);
+
     }
   
     gettingProductTypes();
@@ -27,8 +39,8 @@ function MainContainer() {
         <Header>
             <h1>Ali's Fantasy Shop</h1>
         </Header>
-        <NavBar/>
-         <ListContainer allProducts = {productData}/>
+        <NavBar setView = {setView} view ={view}/>
+         <ListContainer allProducts = {productData} setView = {setView} view ={view} weaponsData = {weaponsData} potionsData = {potionsData} armoursData ={armoursData}/>
     </Main>
   )
 };
