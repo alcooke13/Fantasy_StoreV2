@@ -45,6 +45,8 @@ const Header = styled.header`
 
 const Main = styled.div`
   position: relative;
+  min-height: 100vh;
+
 `
 
 

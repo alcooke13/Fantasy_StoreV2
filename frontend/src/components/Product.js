@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components';
 import bronzeSwordImage from '../images/bronze_sword_pic.webp'
 import silverSwordImage from '../images/silver_sword_pic.jpeg'
@@ -17,10 +17,17 @@ import mediumArmorImage from '../images/medium_armor_pic.png'
 import heavyArmorImage from '../images/heavy_armor_pic.png'
 
 
-function Product({product}) {
-  
+function Product({product, setChosenProduct, chosenProduct, setView, view}) {
+   const chooseProduct = () => {
+    const newProduct = product.id - 1;
+        setChosenProduct(newProduct);
+        setView("single")
+
+   }
+
     return (  
-    <Li>
+    <>
+    <Li onClick={chooseProduct}>
         <BoxContainer>
             <h3>{product.productName}</h3>
             <div>
@@ -32,6 +39,9 @@ function Product({product}) {
             <div>
                 Markup : {Math.round((product.price - product.cost) / product.cost * 100)}%
             </div>
+            
+            {view === "single" ? <div>{product.description}</div> : ""}
+
             {product.productName.toLowerCase() === "bronze sword" ? <Img src={bronzeSwordImage} alt='Picture of Bronze Sword'/> : ""}
             {product.productName.toLowerCase() === "silver sword" ? <Img src={silverSwordImage} alt='Picture Silver Sword'/> : ""}
             {product.productName.toLowerCase() === "gold sword" ? <Img src={goldSwordImage} alt='Picture of Gold Sword'/> : ""}
@@ -49,14 +59,15 @@ function Product({product}) {
             {product.productName.toLowerCase() === "heavy armour" ? <Img src={heavyArmorImage} alt='Picture of heavy armour set'/> : ""}
         
         </BoxContainer>
-    </Li>
+    </Li> 
+    </>
   )
 };
 
 const Li = styled.li`
     border: 1px solid black;
-    max-width: 100px;
-    min-height: 100px;
+    max-width: 210px;
+    min-height: 240px;
     border-radius: 0.5em;
     list-style: none;
     padding: 1rem;
@@ -70,8 +81,8 @@ const BoxContainer = styled.div`
 
 const Img = styled.img`
     margin-top: 1.5rem;
-    max-width: 100px;
-    max-height: 100px;
+    max-width: 125px;
+    max-height: 125px;
 `
 
 export default Product;
