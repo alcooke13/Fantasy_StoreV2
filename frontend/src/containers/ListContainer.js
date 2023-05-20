@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import Product from '../components/Product';
 
-function ListContainer({allProducts, view, setView}) {
-    // const [view, setView] = useState("all");
+function ListContainer({allProducts, view, setView, weaponsData, potionsData, armoursData}) {
     const [chosenProduct, setChosenProduct] = useState({});
 
 
@@ -13,7 +12,21 @@ function ListContainer({allProducts, view, setView}) {
         return <Product key={index} product = {product} view={view} setView={setView} setChosenProduct={setChosenProduct} chosenProduct={chosenProduct}/>
     });
 
-    const singleProduct = productList[chosenProduct]
+    const weaponList = weaponsData.map((product, index) => {
+        return <Product key={index} product = {product} view={view} setView={setView} setChosenProduct={setChosenProduct} chosenProduct={chosenProduct}/>
+    });
+
+    const potionsList = potionsData.map((product, index) => {
+        return <Product key={index} product = {product} view={view} setView={setView} setChosenProduct={setChosenProduct} chosenProduct={chosenProduct}/>
+    });
+
+    const armoursList = armoursData.map((product, index) => {
+        return <Product key={index} product = {product} view={view} setView={setView} setChosenProduct={setChosenProduct} chosenProduct={chosenProduct}/>
+    });
+
+
+    const singleProduct = productList[chosenProduct];
+
     
     
     return (
@@ -21,6 +34,22 @@ function ListContainer({allProducts, view, setView}) {
         {view === "all" ? 
             <ProductContainer>
                 {productList}
+            </ProductContainer> : ""}
+
+
+        {view === "weapons" ? 
+            <ProductContainer>
+                {weaponList}
+            </ProductContainer> : ""}
+        
+        {view === "potions" ? 
+            <ProductContainer>
+                {potionsList}
+            </ProductContainer> : ""}
+        
+        {view === "armours" ? 
+            <ProductContainer>
+                {armoursList}
             </ProductContainer> : ""}
 
         {view === 'single' ? 
