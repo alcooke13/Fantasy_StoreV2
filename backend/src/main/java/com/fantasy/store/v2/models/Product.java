@@ -1,6 +1,7 @@
 package com.fantasy.store.v2.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
@@ -19,18 +20,24 @@ public class Product {
     private Double cost;
     @Column(name = "price")
     private Double price;
-    @JsonBackReference
+
+    @JsonIgnoreProperties({"products"})
     @ManyToOne
     @JoinColumn(name = "product_type_id", nullable = false)
     private ProductType productType;
 
-    public Product(String productName, String description, Double cost, Double price, ProductType productType) {
-        this.productName = productName;
+    @JsonIgnoreProperties({"products"})
+    @ManyToOne
+    @JoinColumn(name = "manufacturer_id", nullable = false)
+    private Manufacturer manufacturer;
+
+    public Product(String productName, String description, Double cost, Double price, ProductType productType, Manufacturer manufacturer) {
+        this.productName = productName.toLowerCase();
         this.description = description;
         this.cost = cost;
         this.price = price;
         this.productType = productType;
-
+        this.manufacturer = manufacturer;
     }
 
     public Product() {
@@ -84,4 +91,11 @@ public class Product {
         this.productType = differentProductType;
     }
 
+    public Manufacturer getManufacturer() {
+        return this.manufacturer;
+    }
+
+    public void setManufacturer(Manufacturer manufacturer) {
+        this.manufacturer = manufacturer;
+    }
 }

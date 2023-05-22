@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Profile("!test")
-//@Component
+@Component
 public class DataLoader implements ApplicationRunner {
 
     @Autowired
@@ -40,18 +40,18 @@ public class DataLoader implements ApplicationRunner {
         manufacturerRepository.save(manufacturerAlchemist);
         manufacturerRepository.save(manufacturerArmorist);
 
-        ProductType weapons = new ProductType("Weapons", manufacturerBlacksmith);
-        ProductType potions = new ProductType("Potions", manufacturerAlchemist);
-        ProductType armor = new ProductType("Armor", manufacturerArmorist);
+        ProductType weapons = new ProductType("Weapons");
+        ProductType potions = new ProductType("Potions");
+        ProductType armor = new ProductType("Armor");
 
         productTypeRepository.save(weapons);
         productTypeRepository.save(potions);
         productTypeRepository.save(armor);
 
-        Product productBronzeSword = new Product("Bronze Sword", "Low Quality Sword", 300.00, 350.00, weapons);
-        Product productSilverSword = new Product("Silver Sword", "Medium Quality Sword", 400.00, 475.00, weapons);
-        Product productHealthPotion = new Product("Health Potion", "Cures wounds", 25.00, 50.00, potions);
-        Product productLeatherArmor = new Product("Leather Armor Set", "Set of low defense, high manouverability armor", 500.00, 600.00, armor);
+        Product productBronzeSword = new Product("Bronze Sword", "Low Quality Sword", 300.00, 350.00, weapons, manufacturerBlacksmith);
+        Product productSilverSword = new Product("Silver Sword", "Medium Quality Sword", 400.00, 475.00, weapons, manufacturerBlacksmith);
+        Product productHealthPotion = new Product("Health Potion", "Cures wounds", 25.00, 50.00, potions, manufacturerAlchemist);
+        Product productLeatherArmor = new Product("Leather Armor Set", "Set of low defense, high manouverability armor", 500.00, 600.00, armor, manufacturerArmorist);
 
         productRepository.save(productBronzeSword);
         productRepository.save(productSilverSword);

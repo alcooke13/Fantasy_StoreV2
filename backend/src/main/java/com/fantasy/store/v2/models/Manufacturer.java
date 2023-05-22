@@ -1,8 +1,11 @@
 package com.fantasy.store.v2.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "manufacturers")
@@ -18,13 +21,14 @@ public class Manufacturer {
     @Column(name = "specialty")
     private String speciality;
 
-    @OneToOne(mappedBy = "manufacturer")
+    @OneToMany(mappedBy = "manufacturer")
     @JsonManagedReference
-    ProductType productType;
+    private List<Product> products;
 
     public Manufacturer(String manufacturerName, String speciality) {
         this.manufacturerName = manufacturerName;
         this.speciality = speciality;
+        this.products = new ArrayList<Product>();
     }
 
     public Manufacturer() {
@@ -56,11 +60,15 @@ public class Manufacturer {
         this.speciality = speciality;
     }
 
-    public ProductType getProductType() {
-        return productType;
+    public List<Product> getProducts() {
+        return this.products;
     }
 
-    public void setProductType(ProductType productType) {
-        this.productType = productType;
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
+    public void addProduct(Product newProduct){
+        this.products.add(newProduct);
     }
 }

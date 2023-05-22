@@ -40,7 +40,6 @@ public class ManufacturerController {
         Manufacturer updateManufacturer = manufacturerRepository.findById(id).get();
         updateManufacturer.setManufacturerName(manufacturer.getManufacturerName());
         updateManufacturer.setSpeciality(manufacturer.getSpeciality());
-        updateManufacturer.setProductType(manufacturer.getProductType());
 
 
         manufacturerRepository.save(updateManufacturer);

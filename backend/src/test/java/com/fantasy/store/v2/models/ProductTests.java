@@ -18,15 +18,15 @@ public class ProductTests {
     public void before() {
         blacksmith = new Manufacturer("Blacksmith", "Blacksmith");
         alchemist = new Manufacturer("Wise Old Sage", "Alchemist");
-        weapons = new ProductType("Weapons", blacksmith);
-        potions = new ProductType("Potions", alchemist);
-        swordProduct = new Product("Bronze Sword", "Low quality sword", 250.00, 300.00, weapons);
+        weapons = new ProductType("Weapons");
+        potions = new ProductType("Potions");
+        swordProduct = new Product("Bronze Sword", "Low quality sword", 250.00, 300.00, weapons, blacksmith);
 
     }
 
     @Test
     public void canGetProductWeaponName() {
-        assertEquals("Bronze Sword", swordProduct.getProductName());
+        assertEquals("bronze sword", swordProduct.getProductName());
     }
 
     @Test

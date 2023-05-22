@@ -41,7 +41,7 @@ public class ProductController {
             updateProduct.setCost(product.getCost());
             updateProduct.setPrice(product.getPrice());
             updateProduct.setProductType(product.getProductType());
-            updateProduct.getProductType().setManufacturer(product.getProductType().getManufacturer());
+
 
         productRepository.save(updateProduct);
         return new ResponseEntity<>(updateProduct, HttpStatus.OK);
