@@ -26,10 +26,26 @@ public class ManufacturerController {
         return new ResponseEntity<>(manufacturerRepository.findById(id), HttpStatus.OK);
     }
 
-    @PostMapping(value = "manufacturers")
+    @PostMapping(value = "/manufacturers")
     public ResponseEntity<Manufacturer> postManufacturer(@RequestBody Manufacturer manufacturer){
         manufacturerRepository.save(manufacturer);
         return new ResponseEntity<>(manufacturer, HttpStatus.CREATED);
     }
 
+    @PutMapping(value = "/manufacturers/{id}/update")
+    public ResponseEntity<Manufacturer> updateSelectedManufacturer(
+            @PathVariable Long id,
+            @RequestBody  Manufacturer manufacturer
+    ){
+        Manufacturer updateManufacturer = manufacturerRepository.findById(id).get();
+        updateManufacturer.setManufacturerName(manufacturer.getManufacturerName());
+        updateManufacturer.setSpeciality(manufacturer.getSpeciality());
+        updateManufacturer.setProductType(manufacturer.getProductType());
+
+
+        manufacturerRepository.save(updateManufacturer);
+        return new ResponseEntity<>(updateManufacturer, HttpStatus.OK);
+
 }
+}
+

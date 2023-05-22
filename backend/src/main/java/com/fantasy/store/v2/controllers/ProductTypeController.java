@@ -25,7 +25,7 @@ public class ProductTypeController {
         return new ResponseEntity<>(productTypeRepository.findById(id), HttpStatus.OK);
     }
 
-    @PostMapping(value = "product_types")
+    @PostMapping(value = "/product_types")
     public ResponseEntity<ProductType> postType(@RequestBody ProductType productType){
         productTypeRepository.save(productType);
         return new ResponseEntity<>(productType, HttpStatus.CREATED);
