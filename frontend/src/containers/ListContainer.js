@@ -58,7 +58,7 @@ function ListContainer({allProducts, view, setView, weaponsData, potionsData, ar
                 {singleProduct}
             </SingleContainer> : ""}
 
-        {view === "new" ? <NewProduct /> : ""}
+        {view === "new" ? <SingleContainer><NewProduct /> </SingleContainer>: ""}
         </>
   )
 };

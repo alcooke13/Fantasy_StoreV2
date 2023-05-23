@@ -23,7 +23,7 @@ function Product({product, setChosenProduct, chosenProduct, setView, view}) {
         setChosenProduct(newProduct);
         setView("single")
 
-   }
+   };
 
     return (  
     <>
