@@ -9,6 +9,13 @@ export function postNewProduct(payload){
         body: JSON.stringify(payload),
         headers: { 'Content-Type': 'application/json' }
     })
-    .then(res => res.json());
-}   
+    .then(res => {
+        if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+        return res.json();
+    })
+    .catch(error => console.error(error));
+}
+
       

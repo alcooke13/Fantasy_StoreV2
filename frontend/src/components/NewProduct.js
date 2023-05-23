@@ -1,32 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { postNewProduct } from '../services/ProductServices';
 
 function NewProduct() {
-    const [product, setProduct] = useState({});
-    
+
     const handleFormSubmit = (evt) => {
-        const manufacturerNew = {
-            manufacturerName: "Alistair", 
-            speciality: "Tester"
-        };
-        
-        const weapon = {
-            typeName: "Weapon",
-            manufacturer: manufacturerNew
-        }
-        
-        
-        const buildingProduct = {
-            productName : "Test Product",
-            description : "This is a product created for testing",
-            cost: 500,
-            price: 750,
-        }
-        setProduct(buildingProduct);
-        postNewProduct(product);
-
-        evt.preventDefault()
-
+    //    evt.preventDefault();
+       
+       const payload = {
+        productName: "REE",
+        description: "Tests wounds",
+        cost: 25.0,
+        price: 50.0,
+        productType: {
+          id: 2,
+          typeName: "Potions",
+        },
+        manufacturer: {
+          id: 2,
+          manufacturerName: "The Old Wise Sage",
+          speciality: "Alchemist",
+        },
+      };
+    //   setProduct(payload);
+    //   console.log(payload, "From new Product");
+      postNewProduct(payload)
     };
   
     return (

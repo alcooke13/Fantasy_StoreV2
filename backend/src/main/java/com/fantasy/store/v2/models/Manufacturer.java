@@ -1,7 +1,6 @@
 package com.fantasy.store.v2.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -22,7 +21,7 @@ public class Manufacturer {
     private String speciality;
 
     @OneToMany(mappedBy = "manufacturer")
-    @JsonManagedReference
+    @JsonIgnoreProperties("manufacturers")
     private List<Product> products;
 
     public Manufacturer(String manufacturerName, String speciality) {

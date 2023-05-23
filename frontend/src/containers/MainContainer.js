@@ -31,7 +31,7 @@ function MainContainer() {
   
     gettingProductTypes();
 
-  }, []);
+  }, [productData]);
   
   
   return (
