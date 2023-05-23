@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import Product from '../components/Product';
+import NewProduct from '../components/NewProduct';
 
 function ListContainer({allProducts, view, setView, weaponsData, potionsData, armoursData}) {
     const [chosenProduct, setChosenProduct] = useState({});
@@ -52,10 +53,12 @@ function ListContainer({allProducts, view, setView, weaponsData, potionsData, ar
                 {armoursList}
             </ProductContainer> : ""}
 
-        {view === 'single' ? 
+        {view === "single" ? 
             <SingleContainer>
                 {singleProduct}
             </SingleContainer> : ""}
+
+        {view === "new" ? <SingleContainer><NewProduct /> </SingleContainer>: ""}
         </>
   )
 };

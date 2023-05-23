@@ -1,7 +1,6 @@
 package com.fantasy.store.v2.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -17,18 +16,13 @@ public class ProductType {
     private Long id;
     @Column(name = "name")
     private String typeName;
-    @OneToOne(cascade = CascadeType.MERGE)
-    @JsonBackReference
-    @JoinColumn(name = "manufacturer_id")
-    private Manufacturer manufacturer;
 
     @OneToMany(mappedBy = "productType")
-    @JsonManagedReference
+    @JsonIgnoreProperties({"product_types"})
     private List<Product> products;
 
-    public ProductType(String typeName, Manufacturer manufacturer) {
+    public ProductType(String typeName) {
         this.typeName = typeName;
-        this.manufacturer = manufacturer;
         this.products = new ArrayList<>();
     }
 
@@ -52,16 +46,12 @@ public class ProductType {
         this.typeName = typeName;
     }
 
-    public Manufacturer getManufacturer() {
-        return this.manufacturer;
-    }
-
-    public void setManufacturer(Manufacturer manufacturer) {
-        this.manufacturer = manufacturer;
-    }
-
     public List<Product> getProducts(){
         return this.products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 
     public void addProduct(Product productToAdd){

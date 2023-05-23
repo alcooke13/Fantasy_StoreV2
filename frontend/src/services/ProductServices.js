@@ -3,4 +3,19 @@ export function getProducts(){
         .then((res) => res.json())
     };
 
+export function postNewProduct(payload){
+    return fetch("http://localhost:8080/products", {
+        method: 'POST',
+        body: JSON.stringify(payload),
+        headers: { 'Content-Type': 'application/json' }
+    })
+    .then(res => {
+        if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+        return res.json();
+    })
+    .catch(error => console.error(error));
+}
+
       

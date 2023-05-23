@@ -25,10 +25,32 @@ public class ProductController {
         return new ResponseEntity<>(productRepository.findById(id), HttpStatus.OK);
     }
 
-    @PostMapping(value = "products")
+    @PostMapping(value = "/products")
     public ResponseEntity<Product> postProduct(@RequestBody Product product){
         productRepository.save(product);
         return new ResponseEntity<>(product, HttpStatus.CREATED);
     }
+    @PutMapping(value = "/products/{id}/update")
+    public ResponseEntity<Product> updateSelectedProduct(
+            @PathVariable Long id,
+            @RequestBody Product product
+        ){
+        Product updateProduct = productRepository.findById(id).get();
+            updateProduct.setProductName(product.getProductName());
+            updateProduct.setDescription(product.getDescription());
+            updateProduct.setCost(product.getCost());
+            updateProduct.setPrice(product.getPrice());
+            updateProduct.setProductType(product.getProductType());
+
+
+        productRepository.save(updateProduct);
+        return new ResponseEntity<>(updateProduct, HttpStatus.OK);
+
+    }
+   @DeleteMapping(value = "/products/{id}")
+    public ResponseEntity<Long> deleteProduct(@PathVariable Long id){
+        productRepository.deleteById(id);
+        return new ResponseEntity<>(id, HttpStatus.OK);
+   }
 
 }
