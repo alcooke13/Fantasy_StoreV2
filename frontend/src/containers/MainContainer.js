@@ -31,7 +31,7 @@ function MainContainer() {
   
     gettingProductTypes();
 
-  }, [productData]);
+  }, [productData, weaponsData, potionsData, armoursData]);
   
   
   return (

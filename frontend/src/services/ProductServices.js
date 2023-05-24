@@ -1,7 +1,8 @@
 export function getProducts(){
     return fetch("http://localhost:8080/products")
-        .then((res) => res.json())
+        .then((res) => res.json());
     };
+
 
 export function postNewProduct(payload){
     return fetch("http://localhost:8080/products", {
@@ -16,6 +17,10 @@ export function postNewProduct(payload){
         return res.json();
     })
     .catch(error => console.error(error));
-}
+};
 
-      
+export function deleteProduct(id){
+    return fetch("http://localhost:8080/products/" + id, {
+        method: 'DELETE'
+    })
+};

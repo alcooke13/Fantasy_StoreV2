@@ -2,16 +2,13 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import Product from '../components/Product';
 import NewProduct from '../components/NewProduct';
-import Button from '../components/Button';
+import { deleteProduct } from '../services/ProductServices';
 
 function ListContainer({allProducts, view, setView, weaponsData, potionsData, armoursData}) {
-    const [chosenProduct, setChosenProduct] = useState({});
-
-
-
+    const [chosenProduct, setChosenProduct] = useState("");
 
     const productList = allProducts.map((product, index) => {
-        return <Product key={index} product = {product} view={view} setView={setView} setChosenProduct={setChosenProduct} chosenProduct={chosenProduct}/>
+        return <Product key={index} product = {product} view={view} setView={setView} setChosenProduct={setChosenProduct} chosenProduct={chosenProduct} index={index}/>
     });
 
     const weaponList = weaponsData.map((product, index) => {
@@ -23,14 +20,19 @@ function ListContainer({allProducts, view, setView, weaponsData, potionsData, ar
     });
 
     const armoursList = armoursData.map((product, index) => {
-        return <Product key={index} product = {product} view={view} setView={setView} setChosenProduct={setChosenProduct} chosenProduct={chosenProduct}/>
+        return <Product key={index} product = {product} view={view} setView={setView} setChosenProduct={setChosenProduct} chosenProduct={chosenProduct} id={product.id}/>
     });
 
 
-    const singleProduct = productList[chosenProduct];
+    const singleProduct = productList[chosenProduct.index];
 
+    const handleDeleteProduct = () => {
+        let productId = chosenProduct.productId;
+        deleteProduct(productId);
+        setView("all");
+    };
     
-    
+
     return (
         <>
         {view === "all" ? 
@@ -58,8 +60,8 @@ function ListContainer({allProducts, view, setView, weaponsData, potionsData, ar
             <SingleContainer>
                 {singleProduct}
                 <ButtonContainer>
-                    <Button type='button'>Edit</Button>
-                    <DeleteButton type='button'>Delete</DeleteButton>
+                    <EditButton type='button'>Edit</EditButton>
+                    <DeleteButton type='button' onClick={handleDeleteProduct}>Delete</DeleteButton>
                 </ButtonContainer>
             </SingleContainer> : ""}
 
@@ -120,8 +122,30 @@ const DeleteButton = styled.button`
     background-color: hsl(0, 60%, 60%);
 
   }
+
+
+`
+
+const EditButton = styled.button`
+    margin-top: 5%;
+    margin-bottom: 5%;
+    background-color: hsl(240, 40%, 65%);
+    border: none;
+    min-height: 40px;
+    min-width: 100px;
+    border-radius: 0.3em;
+    font-size: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-style: italic;
+    color: white;
   
 
+  cursor: pointer;
+  &:hover {
+    background-color:hsl(240, 40%, 70%)
+
+  }
 `
 
 

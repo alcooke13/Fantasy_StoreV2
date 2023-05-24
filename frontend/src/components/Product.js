@@ -17,12 +17,14 @@ import mediumArmorImage from '../images/medium_armor_pic.png'
 import heavyArmorImage from '../images/heavy_armor_pic.png'
 
 
-function Product({product, setChosenProduct, chosenProduct, setView, view}) {
+function Product({product, setChosenProduct, index, setView, view}) {
    const chooseProduct = () => {
-    const newProduct = product.id - 1;
+    const newProduct = {
+        index: index,
+        productId: product.id
+    }
         setChosenProduct(newProduct);
         setView("single")
-
    };
 
     return (  
