@@ -15,14 +15,22 @@ import strengthPotionImage from '../images/strength_potion_pic.png'
 import lightArmorImage from '../images/light_armor_pic.png'
 import mediumArmorImage from '../images/medium_armor_pic.png'
 import heavyArmorImage from '../images/heavy_armor_pic.png'
+import frameImage from '../images/frame.png'
 
-
-function Product({product, setChosenProduct, chosenProduct, setView, view}) {
+function Product({product, setChosenProduct, index, setView, view}) {
    const chooseProduct = () => {
-    const newProduct = product.id - 1;
-        setChosenProduct(newProduct);
-        setView("single")
-
+    const selectedProduct = {
+        index: index,
+        productId: product.id,
+        type: product.productType.typeName,
+        name: product.productName,
+        price: product.price,
+        cost: product.cost,
+        description: product.description
+    }
+        setChosenProduct(selectedProduct);
+        // console.log(selectedProduct);
+        setView("single");
    };
 
     return (  
@@ -65,7 +73,7 @@ function Product({product, setChosenProduct, chosenProduct, setView, view}) {
 };
 
 const Li = styled.li`
-    border: 1px solid black;
+    border: 5px solid #554545;
     max-width: 210px;
     min-height: 240px;
     border-radius: 0.5em;
@@ -77,7 +85,6 @@ const Li = styled.li`
 
 const BoxContainer = styled.div`
 `
-
 
 const Img = styled.img`
     margin-top: 1.5rem;

@@ -41,6 +41,7 @@ public class ProductController {
             updateProduct.setCost(product.getCost());
             updateProduct.setPrice(product.getPrice());
             updateProduct.setProductType(product.getProductType());
+            updateProduct.setManufacturer(product.getManufacturer());
 
 
         productRepository.save(updateProduct);
