@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
-import { postNewProduct } from '../services/ProductServices';
+import React, { useState } from 'react'
+import { editProduct } from '../services/ProductServices';
 import styled from 'styled-components';
 
-function NewProduct() {
+function EditProduct({chosenProduct}) {
     const [nameInput, setNameInput] = useState("");
     const [descriptionInput, setDescriptionInput] = useState("");
     const [costInput, setCostInput] = useState("");
@@ -45,10 +45,7 @@ function NewProduct() {
 
     const handleFormSubmit = (evt) => {
         evt.preventDefault()
-        
-        
-
-
+       
        const payload = {
         productName: nameInput,
         description: descriptionInput,
@@ -61,31 +58,29 @@ function NewProduct() {
           speciality: "Alchemist",
         },
       };
-      postNewProduct(payload)
+      editProduct(payload, chosenProduct.productId);
     };
   
-
-
     return (
         <Container>
         <Form>
             <label htmlFor="productTypes">Product Type: </label>
-            <select name="productTypes" id="productTypes" onChange={handleSelectChange} >
+            <select name="productTypes" id="productTypes" onChange={handleSelectChange}>
                 <option value="Weapons" >Weapon</option>
                 <option value="Potions" >Potion</option>
                 <option value="Armor" >Armour</option>
             </select>
-            <label htmlFor="productName">Product Name: </label>
-            <input type='text' onChange={handleNameInputChange}></input>
-            <label>Cost:</label>
-            <input type='number' onChange={handleCostChange}></input>
+            <label htmlFor="productName" >Product Name: </label>
+            <input type='text' onChange={handleNameInputChange} value={nameInput} placeholder={chosenProduct.name}></input>
+            <label htmlFor='cost' >Cost:</label>
+            <input type='number' onChange={handleCostChange} value={costInput} placeholder={chosenProduct.cost}></input>
             <label>Price:</label>
-            <input type='number' onChange={handlePriceChange}></input>
+            <input type='number' onChange={handlePriceChange} value={priceInput} placeholder={chosenProduct.price}></input>
             <label>Description: </label>
-            <textarea onChange={handleDescriptionChange} rows={4} cols={40}></textarea>
+            <textarea onChange={handleDescriptionChange} rows={4} cols={40} value={descriptionInput} placeholder={chosenProduct.description}></textarea>
             
         </Form>
-        <Button type='submit' onClick={handleFormSubmit}>Add</Button>
+        <Button type='submit' onClick={handleFormSubmit}>Edit</Button>
         </Container>
   
   )
@@ -124,4 +119,4 @@ const Button = styled.button`
     
 `
 
-export default NewProduct;
+export default EditProduct;

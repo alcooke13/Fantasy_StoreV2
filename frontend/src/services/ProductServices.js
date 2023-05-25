@@ -22,5 +22,14 @@ export function postNewProduct(payload){
 export function deleteProduct(id){
     return fetch("http://localhost:8080/products/" + id, {
         method: 'DELETE'
-    })
+    });
+};
+
+export function editProduct(payload, id){
+    console.log(payload);
+    return fetch("http://localhost:8080/products/" + id + "/update", {
+        method: "PUT",
+        body: JSON.stringify(payload),
+        headers: { 'Content-Type': 'application/json' }
+    });
 };

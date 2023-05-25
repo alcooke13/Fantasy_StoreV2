@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Product from '../components/Product';
 import NewProduct from '../components/NewProduct';
 import { deleteProduct } from '../services/ProductServices';
+import EditProduct from '../components/EditProduct';
 
 function ListContainer({allProducts, view, setView, weaponsData, potionsData, armoursData, filtered}) {
     const [chosenProduct, setChosenProduct] = useState("");
@@ -70,7 +71,7 @@ function ListContainer({allProducts, view, setView, weaponsData, potionsData, ar
             <SingleContainer>
                 {singleProduct}
                 <ButtonContainer>
-                    <EditButton type='button'>Edit</EditButton>
+                    <EditButton type='button' onClick={() => setView("edit")}>Edit</EditButton>
                     <DeleteButton type='button' onClick={handleDeleteProduct}>Delete</DeleteButton>
                 </ButtonContainer>
             </SingleContainer> : ""}
@@ -78,7 +79,7 @@ function ListContainer({allProducts, view, setView, weaponsData, potionsData, ar
         {view === "new" ? <SingleContainer><NewProduct /> </SingleContainer>: ""}
 
 
-        {view === "edit"}
+        {view === "edit" ? <SingleContainer><EditProduct chosenProduct={chosenProduct}/></SingleContainer>: ""}
         </>
   )
 };

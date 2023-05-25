@@ -23,7 +23,10 @@ function Product({product, setChosenProduct, index, setView, view}) {
         index: index,
         productId: product.id,
         type: product.productType.typeName,
-        name: product.productName
+        name: product.productName,
+        price: product.price,
+        cost: product.cost,
+        description: product.description
     }
         setChosenProduct(selectedProduct);
         console.log(selectedProduct)
