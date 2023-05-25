@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { postNewProduct } from '../services/ProductServices';
 import styled from 'styled-components';
 
-function NewProduct() {
+function NewProduct({changeViewAll}) {
     const [nameInput, setNameInput] = useState("");
     const [descriptionInput, setDescriptionInput] = useState("");
     const [costInput, setCostInput] = useState("");
@@ -44,10 +44,7 @@ function NewProduct() {
 
 
     const handleFormSubmit = (evt) => {
-        evt.preventDefault()
-        
-        
-
+        evt.preventDefault();
 
        const payload = {
         productName: nameInput,
@@ -61,7 +58,10 @@ function NewProduct() {
           speciality: "Alchemist",
         },
       };
-      postNewProduct(payload)
+      
+      postNewProduct(payload);
+      changeViewAll();
+      
     };
   
 

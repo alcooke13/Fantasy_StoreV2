@@ -5,15 +5,17 @@ import NewProduct from '../components/NewProduct';
 import { deleteProduct } from '../services/ProductServices';
 import EditProduct from '../components/EditProduct';
 
-function ListContainer({allProducts, view, setView, weaponsData, potionsData, armoursData, filtered}) {
+function ListContainer({allProducts, view, setView, weaponsData, potionsData, armoursData, filtered, changeViewAll, changeViewWeapons, changeViewArmour, changeViewPots}) {
     const [chosenProduct, setChosenProduct] = useState("");
 
 
-    const productList = allProducts.map((product, index) => {
+    const productList = allProducts.sort((productA, productB) => productB.productType.typeName.localeCompare(productA.productType.typeName))
+    .map((product, index) => {
         return <Product key={index} product = {product} view={view} setView={setView} setChosenProduct={setChosenProduct} chosenProduct={chosenProduct} index={index}/>
     });
 
-    const weaponList = weaponsData.map((product, index) => {
+    const weaponList = weaponsData.sort((weaponA, weaponB) => weaponA.productName.localeCompare(weaponB.productName))
+    .map((product, index) => {
         return <Product key={index} product = {product} view={view} setView={setView} setChosenProduct={setChosenProduct} chosenProduct={chosenProduct} index={index}/>
     });
 
@@ -22,7 +24,7 @@ function ListContainer({allProducts, view, setView, weaponsData, potionsData, ar
     });
 
     const armoursList = armoursData.map((product, index) => {
-        return <Product key={index} product = {product} view={view} setView={setView} setChosenProduct={setChosenProduct} chosenProduct={chosenProduct} id={product.id} index={index}/>
+        return <Product key={index} product = {product} setChosenProduct={setChosenProduct} chosenProduct={chosenProduct} index={index} setView={setView}/>
     });
 
     let singleProduct;
@@ -40,7 +42,7 @@ function ListContainer({allProducts, view, setView, weaponsData, potionsData, ar
     const handleDeleteProduct = () => {
         let productId = chosenProduct.productId;
         deleteProduct(productId);
-        setView("all");
+        changeViewAll()
     };
     
 
@@ -76,10 +78,13 @@ function ListContainer({allProducts, view, setView, weaponsData, potionsData, ar
                 </ButtonContainer>
             </SingleContainer> : ""}
 
-        {view === "new" ? <SingleContainer><NewProduct /> </SingleContainer>: ""}
+        {view === "new" ? 
+            <SingleContainer>
+                <NewProduct changeViewAll = {changeViewAll}/> 
+            </SingleContainer>: ""}
 
 
-        {view === "edit" ? <SingleContainer><EditProduct chosenProduct={chosenProduct}/></SingleContainer>: ""}
+        {view === "edit" ? <SingleContainer><EditProduct chosenProduct={chosenProduct} setView={setView} changeViewAll={changeViewAll} changeViewWeapons ={changeViewWeapons} changeViewPots = {changeViewPots} changeViewArmour = {changeViewArmour}/></SingleContainer>: ""}
         </>
   )
 };

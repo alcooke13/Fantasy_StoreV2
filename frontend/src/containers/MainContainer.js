@@ -2,9 +2,10 @@ import React from 'react'
 import styled from 'styled-components';
 import NavBar from '../components/NavBar';
 import ListContainer from './ListContainer';
-import image from '../images/potions_header.png'
+// import image from '../images/potions_header.png'
+import image from '../images/header2.jpg'
 import { useEffect, useState } from "react";
-import {getArmors, getPotions, getProductTypes, getWeapons} from '../services/ProductTypeServices'
+import {getArmors, getPotions, getWeapons} from '../services/ProductTypeServices'
 import { getProducts } from '../services/ProductServices';
 
 
@@ -57,22 +58,22 @@ function MainContainer() {
   return (
     <Main>
         <Header>
-            <h1>Ali's Fantasy Shop</h1>
+            <H1>Ali's Fantasy Shop</H1>
         </Header>
         <NavBar setView = {setView} changeViewAll={changeViewAll} changeViewWeapons ={changeViewWeapons} changeViewPots = {changeViewPots} changeViewArmour = {changeViewArmour}/>
-         <ListContainer allProducts = {productData} setView = {setView} view ={view} weaponsData = {weaponsData} potionsData = {potionsData} armoursData ={armoursData} filtered={filtered}/>
+         <ListContainer allProducts = {productData} setView = {setView} view ={view} weaponsData = {weaponsData} potionsData = {potionsData} armoursData ={armoursData} filtered={filtered} changeViewAll={changeViewAll} changeViewWeapons ={changeViewWeapons} changeViewPots = {changeViewPots} changeViewArmour = {changeViewArmour}/>
     </Main>
   );
 };
 const Header = styled.header`
-    font-size: 1.5rem;
     display: flex;
     font-family: fantasy, sans-serif;
     justify-content: center;
     background-image: url(${image});
-    color: black;
+    background-size: cover;
     margin: 0;
     max-width: 100%;
+    
 `
 
 const Main = styled.div`
@@ -80,6 +81,12 @@ const Main = styled.div`
   min-height: 100vh;
 
 `
-
+const H1 = styled.h1`
+  margin: 0;
+  padding: 20px;
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+`
 
 export default MainContainer;

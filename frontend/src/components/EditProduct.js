@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { editProduct } from '../services/ProductServices';
 import styled from 'styled-components';
 
-function EditProduct({chosenProduct}) {
+function EditProduct({chosenProduct, changeViewWeapons, changeViewPots, changeViewArmour}) {
     const [nameInput, setNameInput] = useState("");
     const [descriptionInput, setDescriptionInput] = useState("");
     const [costInput, setCostInput] = useState("");
@@ -30,42 +30,60 @@ function EditProduct({chosenProduct}) {
         setSelected(evt.target.value)
     };
 
+
+   let manufacturer = {};
    if(selected === "Potions"){
     productType.id = 2;
-    productType.typeName = "Potions"
+    productType.typeName = "Potions";
+    manufacturer.id = 2;
+    manufacturer.manufacturerName = "The Old Wise Sage";
+    manufacturer.speciality = "Alchemist";
+    
    }else if(selected === "Armor")
    {
     productType.id = 3;
-    productType.typeName = "Armor"
+    productType.typeName = "Armor";
+    manufacturer.id = 3;
+    manufacturer.manufacturerName = "Armor Tailor";
+    manufacturer.speciality = "Armorsmith"
+    
    }else{
     productType.id = 1;
-    productType.typeName = "Weapons"
+    productType.typeName = "Weapons";
+    manufacturer.id = 1;
+    manufacturer.manufacturerName = "Dwarf's Finest";
+    manufacturer.speciality = "Blacksmith";
+    
    }
 
 
     const handleFormSubmit = (evt) => {
         evt.preventDefault()
-       
+
        const payload = {
         productName: nameInput,
         description: descriptionInput,
         cost: parseInt(costInput),
         price: parseInt(priceInput),
         productType,
-        manufacturer: {
-          id: 2,
-          manufacturerName: "The Old Wise Sage",
-          speciality: "Alchemist",
-        },
+        manufacturer,
       };
+      
       editProduct(payload, chosenProduct.productId);
+      if(payload.productType.typeName === "Weapons"){
+        changeViewWeapons();
+      }else if(payload.productType.typeName === "Potions"){
+        changeViewPots();
+      }else {
+        changeViewArmour();
+      }
     };
   
     return (
         <Container>
         <Form>
             <label htmlFor="productTypes">Product Type: </label>
-            <select name="productTypes" id="productTypes" onChange={handleSelectChange}>
+            <select name="productTypes" id="productTypes" onChange={handleSelectChange} defaultValue={chosenProduct.type}>
                 <option value="Weapons" >Weapon</option>
                 <option value="Potions" >Potion</option>
                 <option value="Armor" >Armour</option>
