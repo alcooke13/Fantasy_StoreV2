@@ -19,11 +19,14 @@ import heavyArmorImage from '../images/heavy_armor_pic.png'
 
 function Product({product, setChosenProduct, index, setView, view}) {
    const chooseProduct = () => {
-    const newProduct = {
+    const selectedProduct = {
         index: index,
-        productId: product.id
+        productId: product.id,
+        type: product.productType.typeName,
+        name: product.productName
     }
-        setChosenProduct(newProduct);
+        setChosenProduct(selectedProduct);
+        console.log(selectedProduct)
         setView("single")
    };
 

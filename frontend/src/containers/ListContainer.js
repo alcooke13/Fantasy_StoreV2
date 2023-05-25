@@ -4,27 +4,37 @@ import Product from '../components/Product';
 import NewProduct from '../components/NewProduct';
 import { deleteProduct } from '../services/ProductServices';
 
-function ListContainer({allProducts, view, setView, weaponsData, potionsData, armoursData}) {
+function ListContainer({allProducts, view, setView, weaponsData, potionsData, armoursData, filtered}) {
     const [chosenProduct, setChosenProduct] = useState("");
+
 
     const productList = allProducts.map((product, index) => {
         return <Product key={index} product = {product} view={view} setView={setView} setChosenProduct={setChosenProduct} chosenProduct={chosenProduct} index={index}/>
     });
 
     const weaponList = weaponsData.map((product, index) => {
-        return <Product key={index} product = {product} view={view} setView={setView} setChosenProduct={setChosenProduct} chosenProduct={chosenProduct}/>
+        return <Product key={index} product = {product} view={view} setView={setView} setChosenProduct={setChosenProduct} chosenProduct={chosenProduct} index={index}/>
     });
 
     const potionsList = potionsData.map((product, index) => {
-        return <Product key={index} product = {product} view={view} setView={setView} setChosenProduct={setChosenProduct} chosenProduct={chosenProduct}/>
+        return <Product key={index} product = {product} view={view} setView={setView} setChosenProduct={setChosenProduct} chosenProduct={chosenProduct} index={index}/>
     });
 
     const armoursList = armoursData.map((product, index) => {
-        return <Product key={index} product = {product} view={view} setView={setView} setChosenProduct={setChosenProduct} chosenProduct={chosenProduct} id={product.id}/>
+        return <Product key={index} product = {product} view={view} setView={setView} setChosenProduct={setChosenProduct} chosenProduct={chosenProduct} id={product.id} index={index}/>
     });
 
-
-    const singleProduct = productList[chosenProduct.index];
+    let singleProduct;
+    if(chosenProduct.type === "Weapons" && filtered === true){
+        singleProduct = weaponList[chosenProduct.index];
+    }else if (chosenProduct.type === "Potions" && filtered === true){
+        singleProduct = potionsList[chosenProduct.index];
+      
+    }else if (chosenProduct.type === "Armor" && filtered === true){
+        singleProduct = armoursList[chosenProduct.index];
+    }else {
+        singleProduct = productList[chosenProduct.index];
+    }
 
     const handleDeleteProduct = () => {
         let productId = chosenProduct.productId;
@@ -66,6 +76,9 @@ function ListContainer({allProducts, view, setView, weaponsData, potionsData, ar
             </SingleContainer> : ""}
 
         {view === "new" ? <SingleContainer><NewProduct /> </SingleContainer>: ""}
+
+
+        {view === "edit"}
         </>
   )
 };

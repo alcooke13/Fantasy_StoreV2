@@ -14,6 +14,7 @@ function MainContainer() {
   const [potionsData, setPotionsData] = useState([]);
   const [armoursData, setArmoursData] = useState([]);
   const [view, setView] = useState("all");
+  const [filtered, setFiltered] = useState(false);
   useEffect(() => {
   
     const gettingProductTypes = async () => {
@@ -33,16 +34,35 @@ function MainContainer() {
 
   }, [productData, weaponsData, potionsData, armoursData]);
   
+  const changeViewAll = () => {
+    setFiltered(false);
+    setView("all");
+  };
+
+  const changeViewWeapons = () => {
+    setFiltered(true);
+    setView("weapons")
+  };
   
+  const changeViewPots =  () => {
+    setFiltered(true);
+    setView("potions")
+  };
+
+  const changeViewArmour =  () => {
+    setFiltered(true);
+    setView("armours")
+  };
+
   return (
     <Main>
         <Header>
             <h1>Ali's Fantasy Shop</h1>
         </Header>
-        <NavBar setView = {setView} view ={view}/>
-         <ListContainer allProducts = {productData} setView = {setView} view ={view} weaponsData = {weaponsData} potionsData = {potionsData} armoursData ={armoursData}/>
+        <NavBar setView = {setView} changeViewAll={changeViewAll} changeViewWeapons ={changeViewWeapons} changeViewPots = {changeViewPots} changeViewArmour = {changeViewArmour}/>
+         <ListContainer allProducts = {productData} setView = {setView} view ={view} weaponsData = {weaponsData} potionsData = {potionsData} armoursData ={armoursData} filtered={filtered}/>
     </Main>
-  )
+  );
 };
 const Header = styled.header`
     font-size: 1.5rem;

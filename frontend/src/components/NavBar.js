@@ -1,16 +1,16 @@
 import React from 'react'
 import styled from 'styled-components';
 
-function NavBar({view, setView}) {
+function NavBar({setView, changeViewAll, changeViewWeapons, changeViewPots, changeViewArmour}) {
   
   
   return (
         <Nav>
             <NavContainer>
-                <Li onClick = {() => setView("all")}>All Products</Li>
-                <Li onClick = {() => setView("weapons")}>Weapons</Li>
-                <Li onClick = {() => setView("potions")}>Potions</Li>
-                <Li onClick = {() => setView("armours")}>Armour</Li>
+                <Li onClick = {changeViewAll}>All Products</Li>
+                <Li onClick = {changeViewWeapons}>Weapons</Li>
+                <Li onClick = {changeViewPots}>Potions</Li>
+                <Li onClick = {changeViewArmour}>Armour</Li>
                 <Li onClick = {() => setView("new")}>New Product</Li>
             </NavContainer>
         </Nav>
