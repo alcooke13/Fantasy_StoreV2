@@ -117,7 +117,7 @@ const Form = styled.form`
 const Button = styled.button`
   margin-top: 5%;
   margin-bottom: 5%;
-  background-color: hsl(240, 40%, 65%);
+  background-color: rgb(9, 9, 78);
   border: none;
   min-height: 40px;
   min-width: 100px;
@@ -131,7 +131,7 @@ const Button = styled.button`
 
   cursor: pointer;
   &:hover {
-    background-color: hsl(240, 40%, 70%);
+    background-color:hsl(249, 85%, 60%);
 
   }
     

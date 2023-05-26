@@ -20,7 +20,7 @@ function NavBar({setView, changeViewAll, changeViewWeapons, changeViewPots, chan
 const Nav = styled.nav`
   position: sticky;
   top: 0;
-  background-color: hsl(240, 40%, 65%);
+  background-color: rgb(9, 9, 78);
   padding:25px;
 `
 
@@ -41,7 +41,7 @@ const NavContainer = styled.ul`
 `
 
 const Li = styled.button`
-  background-color: hsl(240, 40%, 65%);
+  background-color: rgb(9, 9, 78);
   border: none;
   min-height: 40px;
   min-width: 100px;
@@ -59,7 +59,7 @@ const Li = styled.button`
 }
   cursor: pointer;
   &:hover {
-    background-color: hsl(240, 40%, 70%);
+   background-color:hsl(249, 85%, 60%);
   }
   
 `
