@@ -12,10 +12,13 @@ import goldSpearImage from '../images/gold_spear_pic.png'
 import manaPotionImage from '../images/mana_potion_pic.png'
 import healthPotionImage from '../images/health_potion_pic.png'
 import strengthPotionImage from '../images/strength_potion_pic.png'
-import lightArmorImage from '../images/light_armor_pic.png'
-import mediumArmorImage from '../images/medium_armor_pic.png'
-import heavyArmorImage from '../images/heavy_armor_pic.png'
-import frameImage from '../images/frame.png'
+import lightArmorImage from '../images/light_armor.png'
+import mediumArmorImage from '../images/medium_armor.png'
+import heavyArmorImage from '../images/heavy_armor.png'
+import genericWeaponImage from '../images/weapon_picture.jpeg'
+import genericPotionImage from '../images/potion_pic.jpeg'
+import genericArmourImage from '../images/armor_pic.png'
+
 
 function Product({product, setChosenProduct, index, setView, view}) {
    const chooseProduct = () => {
@@ -32,6 +35,13 @@ function Product({product, setChosenProduct, index, setView, view}) {
         // console.log(selectedProduct);
         setView("single");
    };
+
+   const productName = product.productName.toLowerCase();
+   const weaponNames = ["bronze sword", "silver sword", "gold sword", "bronze axe", "silver axe", "gold axe", "bronze spear", "gold spear"];
+   const potionNames = ["health potion", "mana potion", "strength potion"];
+   const armourNames = ["light armour", "light armor", "medium armor", "medium armour", "heavy armor", "heavy armour"];
+
+   const productTypeName = product.productType.typeName.toLowerCase();
 
     return (  
     <>
@@ -50,22 +60,32 @@ function Product({product, setChosenProduct, index, setView, view}) {
             
             {view === "single" ? <div>{product.description}</div> : ""}
 
-            {product.productName.toLowerCase() === "bronze sword" ? <Img src={bronzeSwordImage} alt='Picture of Bronze Sword'/> : ""}
-            {product.productName.toLowerCase() === "silver sword" ? <Img src={silverSwordImage} alt='Picture Silver Sword'/> : ""}
-            {product.productName.toLowerCase() === "gold sword" ? <Img src={goldSwordImage} alt='Picture of Gold Sword'/> : ""}
-            {product.productName.toLowerCase() === "bronze axe" ? <Img src={bronzeAxeImage} alt='Picture of Bronze Axe'/> : ""}
-            {product.productName.toLowerCase() === "silver axe" ? <Img src={silverAxeImage} alt='Picture of Silver Axe'/> : ""}
-            {product.productName.toLowerCase() === "gold axe" ? <Img src={goldAxeImage} alt='Picture of Gold Axe'/> : ""}
-            {product.productName.toLowerCase() === "bronze spear" ? <Img src={bronzeSpearImage} alt='Picture of Bronze Spear'/> : ""}
-            {product.productName.toLowerCase() === "silver spear" ? <Img src={silverSpearImage} alt='Picture of Silver Spear'/> : ""}
-            {product.productName.toLowerCase() === "gold spear" ? <Img src={goldSpearImage} alt='Picture of Gold Spear'/> : ""}
-            {product.productName.toLowerCase() === "mana potion" ? <Img src={manaPotionImage} alt='Picture of mana potion'/> : ""}
-            {product.productName.toLowerCase() === "health potion" ? <Img src={healthPotionImage} alt='Picture of health potion'/> : ""}
-            {product.productName.toLowerCase() === "strength potion" ? <Img src={strengthPotionImage} alt='Picture of strength potion'/> : ""}
-            {product.productName.toLowerCase() === "leather armor set" ? <Img src={lightArmorImage} alt='Picture of light armour set'/> : ""}
-            {product.productName.toLowerCase() === "medium armour" ? <Img src={mediumArmorImage} alt='Picture of medium armour set'/> : ""}
-            {product.productName.toLowerCase() === "heavy armour" ? <Img src={heavyArmorImage} alt='Picture of heavy armour set'/> : ""}
+            {/* new / edited product input matches options and matches their product type  */}
+
+            {productName === "bronze sword" && productTypeName === "weapons" ? <Img src={bronzeSwordImage} alt='Picture of Bronze Sword'/> : ""}
+            {productName === "silver sword" && productTypeName === "weapons" ? <Img src={silverSwordImage} alt='Picture Silver Sword'/> : ""}
+            {productName === "gold sword" && productTypeName === "weapons" ? <Img src={goldSwordImage} alt='Picture of Gold Sword'/> : ""}
+            {productName === "bronze axe" && productTypeName === "weapons" ? <Img src={bronzeAxeImage} alt='Picture of Bronze Axe'/> : ""}
+            {productName === "silver axe" && productTypeName === "weapons" ? <Img src={silverAxeImage} alt='Picture of Silver Axe'/> : ""}
+            {productName === "gold axe" && productTypeName === "weapons" ? <Img src={goldAxeImage} alt='Picture of Gold Axe'/> : ""}
+            {productName === "bronze spear" && productTypeName === "weapons" ? <Img src={bronzeSpearImage} alt='Picture of Bronze Spear'/> : ""}
+            {productName === "silver spear" && productTypeName === "weapons" ? <Img src={silverSpearImage} alt='Picture of Silver Spear'/> : ""}
+            {productName === "gold spear" && productTypeName === "weapons" ? <Img src={goldSpearImage} alt='Picture of Gold Spear'/> : ""}
+            {productName === "mana potion" && productTypeName === "potions" ? <Img src={manaPotionImage} alt='Picture of mana potion'/> : ""}
+            {productName === "health potion" && productTypeName === "potions" ? <Img src={healthPotionImage} alt='Picture of health potion'/> : ""}
+            {productName === "strength potion" && productTypeName === "potions" ? <Img src={strengthPotionImage} alt='Picture of strength potion'/> : ""}
+            {(productName === "light armour" || productName === "light armor") && productTypeName === "armor" ? <Img src={lightArmorImage} alt='Picture of light armour set'/> : ""}
+            {(productName === "medium armour" || productName === "medium armor")&& productTypeName === "armor" ? <Img src={mediumArmorImage} alt='Picture of medium armour set'/> : ""}
+            {(productName === "heavy armour" || productName === "heavy armor") && productTypeName === "armor" ? <Img src={heavyArmorImage} alt='Picture of heavy armour set'/> : ""}
+
         
+            {/* product name does not match the options to display generic image based on the product type selected */}
+            
+            {!weaponNames.includes(productName) && productTypeName === "weapons" ? <Img src={genericWeaponImage} alt='generic weapon image' /> : ""}
+            {!potionNames.includes(productName) && productTypeName === "potions" ? <Img src={genericPotionImage} alt='generic potion image' /> : ""}
+            {!armourNames.includes(productName) && productTypeName === "armor" ? <Img src={genericArmourImage} alt='generic armour image' /> : ""}
+
+
         </BoxContainer>
     </Li> 
     </>
