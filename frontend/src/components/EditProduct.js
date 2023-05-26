@@ -105,7 +105,15 @@ function EditProduct({chosenProduct, changeViewWeapons, changeViewPots, changeVi
 };
 
 const Container = styled.div`
-   margin-top: 2%;
+  margin-top: 2%;
+  border: solid 2px #554545;
+  padding: 25px;
+  border-radius: 0.3em;
+
+  @media (max-width:900px) {
+    border: none;
+  }
+
 `
 
 const Form = styled.form`

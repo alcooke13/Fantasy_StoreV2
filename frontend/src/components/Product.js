@@ -46,7 +46,8 @@ function Product({product, setChosenProduct, index, setView, view}) {
     return (  
     <>
     <Li onClick={chooseProduct}>
-        <BoxContainer>
+       
+            <ProductDetails>
             <h3>{product.productName}</h3>
             <div>
                 Cost: {product.cost}
@@ -58,8 +59,10 @@ function Product({product, setChosenProduct, index, setView, view}) {
                 Markup : {Math.round((product.price - product.cost) / product.cost * 100)}%
             </div>
             
+            
+            
             {view === "single" ? <div>{product.description}</div> : ""}
-
+            </ProductDetails>
             {/* new / edited product input matches options and matches their product type  */}
 
             {productName === "bronze sword" && productTypeName === "weapons" ? <Img src={bronzeSwordImage} alt='Picture of Bronze Sword'/> : ""}
@@ -86,7 +89,7 @@ function Product({product, setChosenProduct, index, setView, view}) {
             {!armourNames.includes(productName) && productTypeName === "armor" ? <Img src={genericArmourImage} alt='generic armour image' /> : ""}
 
 
-        </BoxContainer>
+        
     </Li> 
     </>
   )
@@ -94,22 +97,40 @@ function Product({product, setChosenProduct, index, setView, view}) {
 
 const Li = styled.li`
     border: 5px solid #554545;
-    max-width: 210px;
-    min-height: 240px;
+    min-width: 250px;
+    min-height: 400px;
+    max-width: 300px;
     border-radius: 0.5em;
     list-style: none;
     padding: 1rem;
     margin: 5px;
     text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    @media (max-width:900px){
+        max-width: 210px;
+        min-height: 240px;
+        min-width: 129px;
+
+    }
+
+
 `
 
-const BoxContainer = styled.div`
+
+const ProductDetails = styled.div`
+    
 `
+
 
 const Img = styled.img`
-    margin-top: 1.5rem;
+    margin-top: 7rem;
     max-width: 125px;
     max-height: 125px;
+    
 `
 
 export default Product;
