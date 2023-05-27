@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import styled from 'styled-components';
 
 
-function ModalComponent({}) {
-    const [show, setShow] = useState(false)
+function ModalComponent({show, setShow}) {
+   
+
 
     if(show === false){
         return null
@@ -13,13 +14,13 @@ function ModalComponent({}) {
     <Modal>
         <ModalContent>
             <ModalHeader>
-                <h4>Modal Title</h4>
+                <h4>Stock Quantity</h4>
             </ModalHeader>
         <ModalBody>
-            Modal Content
+           STOCK INFO
         </ModalBody>
         <ModalFooter>
-            <button>Close</button>
+            <button onClick={() => setShow(false)}>Close</button>
         </ModalFooter>
         </ModalContent>
     </Modal>

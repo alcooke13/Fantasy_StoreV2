@@ -4,8 +4,9 @@ import Product from '../components/Product';
 import NewProduct from '../components/NewProduct';
 import { deleteProduct } from '../services/ProductServices';
 import EditProduct from '../components/EditProduct';
+import ModalComponent from '../components/Modal';
 
-function ListContainer({allProducts, view, setView, weaponsData, potionsData, armoursData, filtered, changeViewAll, changeViewWeapons, changeViewArmour, changeViewPots}) {
+function ListContainer({allProducts, view, setView, weaponsData, potionsData, armoursData, filtered, changeViewAll, changeViewWeapons, changeViewArmour, changeViewPots, show, setShow}) {
     const [chosenProduct, setChosenProduct] = useState("");
 
 
@@ -50,6 +51,7 @@ function ListContainer({allProducts, view, setView, weaponsData, potionsData, ar
         <>
         {view === "all" ? 
             <ProductContainer>
+                <ModalComponent show={show} setShow={setShow}/>
                 {productList}
             </ProductContainer> : ""}
 
