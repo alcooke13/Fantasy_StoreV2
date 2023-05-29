@@ -109,6 +109,7 @@ const Container = styled.div`
   border: solid 2px #554545;
   padding: 25px;
   border-radius: 0.3em;
+  background-color: hsl(0, 1%, 100%);
 
   @media (max-width:900px) {
     border: none;

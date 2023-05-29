@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Calligraffitti');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+
+
+body {
+    font-family: 'Calligraffitti', sans-serif;
+    background-color: hsl(0, 1%, 90%);
+}
+
+input {
+    font-family: inherit;
+}
+
+.nav-bar {
+  font-size: 1em;
+  font-family: 'Noto Sans', sans-serif;
+  font-weight: bold;
+  font-style: italic;
+  color: white;
+}
