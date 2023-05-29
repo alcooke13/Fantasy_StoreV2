@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 
-function NavBar({setView, changeViewAll, changeViewWeapons, changeViewPots, changeViewArmour}) {
+function NavBar({setView, changeViewAll, changeViewWeapons, changeViewPots, changeViewArmour, setShow}) {
   
   
   return (
@@ -12,6 +12,7 @@ function NavBar({setView, changeViewAll, changeViewWeapons, changeViewPots, chan
                 <Li onClick = {changeViewPots}>Potions</Li>
                 <Li onClick = {changeViewArmour}>Armour</Li>
                 <Li onClick = {() => setView("new")}>New Product</Li>
+                <Li onClick={() => setShow(true)}>Stock</Li>
             </NavContainer>
         </Nav>
   )

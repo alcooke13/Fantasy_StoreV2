@@ -2,11 +2,11 @@ import React from 'react'
 import styled from 'styled-components';
 import NavBar from '../components/NavBar';
 import ListContainer from './ListContainer';
-// import image from '../images/potions_header.png'
 import image from '../images/header2.jpg'
 import { useEffect, useState } from "react";
 import {getArmors, getPotions, getWeapons} from '../services/ProductTypeServices'
 import { getProducts } from '../services/ProductServices';
+import ModalComponent from '../components/Modal';
 
 
 function MainContainer() {
@@ -16,6 +16,8 @@ function MainContainer() {
   const [armoursData, setArmoursData] = useState([]);
   const [view, setView] = useState("all");
   const [filtered, setFiltered] = useState(false);
+  const [show, setShow] = useState(false);
+
   useEffect(() => {
   
     const gettingProductTypes = async () => {
@@ -57,11 +59,12 @@ function MainContainer() {
 
   return (
     <Main>
+      <ModalComponent setShow={setShow} show={show} productData={productData}/>
         <Header>
             <H1>Ali's Fantasy Shop</H1>
         </Header>
-        <NavBar setView = {setView} changeViewAll={changeViewAll} changeViewWeapons ={changeViewWeapons} changeViewPots = {changeViewPots} changeViewArmour = {changeViewArmour}/>
-         <ListContainer allProducts = {productData} setView = {setView} view ={view} weaponsData = {weaponsData} potionsData = {potionsData} armoursData ={armoursData} filtered={filtered} changeViewAll={changeViewAll} changeViewWeapons ={changeViewWeapons} changeViewPots = {changeViewPots} changeViewArmour = {changeViewArmour}/>
+        <NavBar setView = {setView} changeViewAll={changeViewAll} changeViewWeapons ={changeViewWeapons} changeViewPots = {changeViewPots} changeViewArmour = {changeViewArmour} setShow={setShow}/>
+         <ListContainer allProducts = {productData} setView = {setView} view ={view} weaponsData = {weaponsData} potionsData = {potionsData} armoursData ={armoursData} filtered={filtered} changeViewAll={changeViewAll} changeViewWeapons ={changeViewWeapons} changeViewPots = {changeViewPots} changeViewArmour = {changeViewArmour} show={show} setShow={setShow}/>
     </Main>
   );
 };
