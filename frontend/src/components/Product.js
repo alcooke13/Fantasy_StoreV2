@@ -48,20 +48,20 @@ function Product({product, setChosenProduct, index, setView, view}) {
     <Li onClick={chooseProduct}>
        
             <ProductDetails>
-            <h3>{product.productName}</h3>
-            <div>
+            <H3>{product.productName}</H3>
+            <Details>
                 Cost: {product.cost}
-            </div>
-            <div>
+            </Details>
+            <Details>
                 Price: {product.price}
-            </div>
-            <div>
+            </Details>
+            <Details>
                 Markup : {Math.round((product.price - product.cost) / product.cost * 100)}%
-            </div>
+            </Details>
+            <hr></hr>
             
             
-            
-            {view === "single" ? <div>{product.description}</div> : <div>{product.description.slice(0, 20) + '...'}</div>}
+            {view === "single" ? <Details>{product.description}</Details> : <Details>{product.description.slice(0, 20) + '...'}</Details>}
             </ProductDetails>
             {/* new / edited product input matches options and matches their product type  */}
 
@@ -77,9 +77,9 @@ function Product({product, setChosenProduct, index, setView, view}) {
             {productName === "mana potion" && productTypeName === "potions" ? <Img src={manaPotionImage} alt='Picture of mana potion'/> : ""}
             {productName === "health potion" && productTypeName === "potions" ? <Img src={healthPotionImage} alt='Picture of health potion'/> : ""}
             {productName === "strength potion" && productTypeName === "potions" ? <Img src={strengthPotionImage} alt='Picture of strength potion'/> : ""}
-            {(productName === "light armour" || productName === "light armor") && productTypeName === "armor" ? <Img src={lightArmorImage} alt='Picture of light armour set'/> : ""}
-            {(productName === "medium armour" || productName === "medium armor")&& productTypeName === "armor" ? <Img src={mediumArmorImage} alt='Picture of medium armour set'/> : ""}
-            {(productName === "heavy armour" || productName === "heavy armor") && productTypeName === "armor" ? <Img src={heavyArmorImage} alt='Picture of heavy armour set'/> : ""}
+            {(productName === "light armour" || productName === "light armor") && productTypeName === "armor" ? <ImgArmour src={lightArmorImage} alt='Picture of light armour set'/> : ""}
+            {(productName === "medium armour" || productName === "medium armor")&& productTypeName === "armor" ? <ImgArmour src={mediumArmorImage} alt='Picture of medium armour set'/> : ""}
+            {(productName === "heavy armour" || productName === "heavy armor") && productTypeName === "armor" ? <ImgArmour src={heavyArmorImage} alt='Picture of heavy armour set'/> : ""}
 
         
             {/* product name does not match the options to display generic image based on the product type selected */}
@@ -105,10 +105,12 @@ const Li = styled.li`
     padding: 1rem;
     margin: 5px;
     text-align: center;
+    background-color: hsl(0, 1%, 100%);
 
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
     align-items: center;
+    
     
     @media (max-width:900px){
         max-width: 210px;
@@ -125,12 +127,28 @@ const ProductDetails = styled.div`
     
 `
 
+const H3 = styled.h3`
+    font-size: 2rem;
+    /* font-family: fantasy, sans-serif; */
+`
+
+const Details = styled.div`
+    /* font-family: fantasy, sans-serif; */
+    font-size: 1.3rem;
+`
 
 const Img = styled.img`
-    margin-top: 7rem;
+    margin-top: 25px;
     max-width: 125px;
     max-height: 125px;
-    
+    justify-self: center;
+`
+
+const ImgArmour = styled.img`
+    margin-top: 25px;
+    max-width: 200px;
+    max-height: 200px;
+    justify-self: center;
 `
 
 export default Product;

@@ -24,7 +24,7 @@ function ListContainer({allProducts, view, setView, weaponsData, potionsData, ar
     });
 
     const armoursList = armoursData.map((product, index) => {
-        return <Product key={index} product = {product} setChosenProduct={setChosenProduct} chosenProduct={chosenProduct} index={index} setView={setView}/>
+        return <Product key={index} product = {product} setChosenProduct={setChosenProduct} chosenProduct={chosenProduct} index={index} setView={setView} view={view}/>
     });
 
     let singleProduct;

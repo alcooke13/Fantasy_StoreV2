@@ -7,12 +7,12 @@ function NavBar({setView, changeViewAll, changeViewWeapons, changeViewPots, chan
   return (
         <Nav>
             <NavContainer>
-                <Li onClick = {changeViewAll}>All Products</Li>
-                <Li onClick = {changeViewWeapons}>Weapons</Li>
-                <Li onClick = {changeViewPots}>Potions</Li>
-                <Li onClick = {changeViewArmour}>Armour</Li>
-                <Li onClick = {() => setView("new")}>New Product</Li>
-                <Li onClick={() => setShow(true)}>Stock</Li>
+                <Li onClick = {changeViewAll} className='nav-bar'>All Products</Li>
+                <Li onClick = {changeViewWeapons} className='nav-bar'>Weapons</Li>
+                <Li onClick = {changeViewPots} className='nav-bar'>Potions</Li>
+                <Li onClick = {changeViewArmour} className='nav-bar'>Armour</Li>
+                <Li onClick = {() => setView("new")} className='nav-bar'>New Product</Li>
+                <Li onClick={() => setShow(true)} className='nav-bar'>Stock</Li>
             </NavContainer>
         </Nav>
   )
@@ -47,12 +47,6 @@ const Li = styled.button`
   min-height: 40px;
   min-width: 100px;
   border-radius: 0.3em;
-  font-size: 1em;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  font-style: italic;
-  color: white;
-
 
   @media (max-width:900px) {
   font-size: 1em;

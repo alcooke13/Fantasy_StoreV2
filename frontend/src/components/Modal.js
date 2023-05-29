@@ -86,6 +86,8 @@ const ModalBody = styled.div`
 
 const ModalFooter = styled.div`
     padding: 10px;
+    display: flex;
+    justify-content: flex-end;
 `
 
 const Li = styled.li`

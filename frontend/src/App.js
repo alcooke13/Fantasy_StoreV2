@@ -1,5 +1,6 @@
 import MainContainer from "./containers/MainContainer";
-// import './index.css'
+import './index.css'
+import './App.css'
 
 function App() {
 
