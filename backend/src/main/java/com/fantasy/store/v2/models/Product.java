@@ -13,7 +13,7 @@ public class Product {
     private Long id;
     @Column(name = "name")
     private String productName;
-    @Column(name = "description")
+    @Column(name = "description", columnDefinition = "text")
     private String description;
     @Column(name = "cost")
     private Double cost;
