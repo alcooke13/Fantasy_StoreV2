@@ -6,6 +6,7 @@ import image from '../images/header2.jpg'
 import { useEffect, useState } from "react";
 import {getArmors, getPotions, getWeapons} from '../services/ProductTypeServices'
 import { getProducts } from '../services/ProductServices';
+import ModalComponent from '../components/Modal';
 
 
 function MainContainer() {
@@ -58,6 +59,7 @@ function MainContainer() {
 
   return (
     <Main>
+      <ModalComponent setShow={setShow} show={show} productData={productData}/>
         <Header>
             <H1>Ali's Fantasy Shop</H1>
         </Header>

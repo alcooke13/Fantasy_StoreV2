@@ -61,7 +61,7 @@ function Product({product, setChosenProduct, index, setView, view}) {
             
             
             
-            {view === "single" ? <div>{product.description}</div> : ""}
+            {view === "single" ? <div>{product.description}</div> : <div>{product.description.slice(0, 20) + '...'}</div>}
             </ProductDetails>
             {/* new / edited product input matches options and matches their product type  */}
 
