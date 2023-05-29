@@ -37,7 +37,7 @@ function Product({product, setChosenProduct, index, setView, view}) {
    };
 
    const productName = product.productName.toLowerCase();
-   const weaponNames = ["bronze sword", "silver sword", "gold sword", "bronze axe", "silver axe", "gold axe", "bronze spear", "gold spear"];
+   const weaponNames = ["bronze sword", "silver sword", "gold sword", "bronze axe", "silver axe", "gold axe", "bronze spear", "silver spear", "gold spear"];
    const potionNames = ["health potion", "mana potion", "strength potion"];
    const armourNames = ["light armour", "light armor", "medium armor", "medium armour", "heavy armor", "heavy armour"];
 
