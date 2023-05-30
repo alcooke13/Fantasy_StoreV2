@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { editProduct } from '../services/ProductServices';
 import styled from 'styled-components';
 
@@ -8,6 +8,14 @@ function EditProduct({chosenProduct, changeViewWeapons, changeViewPots, changeVi
     const [costInput, setCostInput] = useState("");
     const [priceInput, setPriceInput] = useState("");
     const [selected, setSelected] = useState("Weapons");
+
+    useEffect(() => {
+      setNameInput(chosenProduct.name);
+      setDescriptionInput(chosenProduct.description);
+      setCostInput(chosenProduct.cost);
+      setPriceInput(chosenProduct.price);
+      setSelected(chosenProduct.type);
+    }, [chosenProduct]);
 
     let productType = {};
 
@@ -89,13 +97,13 @@ function EditProduct({chosenProduct, changeViewWeapons, changeViewPots, changeVi
                 <option value="Armor" >Armour</option>
             </select>
             <label htmlFor="productName" >Product Name: </label>
-            <input type='text' onChange={handleNameInputChange} value={nameInput} placeholder={chosenProduct.name}></input>
+            <input type='text' onChange={handleNameInputChange} defaultValue={chosenProduct.name} value={nameInput}></input>
             <label htmlFor='cost' >Cost:</label>
-            <input type='number' onChange={handleCostChange} value={costInput} placeholder={chosenProduct.cost}></input>
+            <input type='number' onChange={handleCostChange} defaultValue={chosenProduct.cost} value={costInput}></input>
             <label>Price:</label>
-            <input type='number' onChange={handlePriceChange} value={priceInput} placeholder={chosenProduct.price}></input>
+            <input type='number' onChange={handlePriceChange} defaultValue={chosenProduct.price} value={priceInput}></input>
             <label>Description: </label>
-            <textarea onChange={handleDescriptionChange} rows={4} cols={40} value={descriptionInput} placeholder={chosenProduct.description}></textarea>
+            <textarea onChange={handleDescriptionChange} rows={4} cols={40} defaultValue={chosenProduct.description} value={descriptionInput}></textarea>
             
         </Form>
         <Button type='submit' onClick={handleFormSubmit}>Edit</Button>
