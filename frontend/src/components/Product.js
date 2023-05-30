@@ -29,7 +29,8 @@ function Product({product, setChosenProduct, index, setView, view}) {
         name: product.productName,
         price: product.price,
         cost: product.cost,
-        description: product.description
+        description: product.description,
+        manufacturer: product.manufacturer.manufacturerName
     }
         setChosenProduct(selectedProduct);
         // console.log(selectedProduct);
@@ -49,6 +50,11 @@ function Product({product, setChosenProduct, index, setView, view}) {
        
             <ProductDetails>
             <H3>{product.productName}</H3>
+            
+            {view === "single" ? <Details>
+                Manufacturer : {product.manufacturer.manufacturerName}
+            </Details> : ""}
+            
             <Details>
                 Cost: {product.cost}
             </Details>
@@ -58,6 +64,7 @@ function Product({product, setChosenProduct, index, setView, view}) {
             <Details>
                 Markup : {Math.round((product.price - product.cost) / product.cost * 100)}%
             </Details>
+            
             <hr></hr>
             
             
