@@ -61,7 +61,7 @@ function MainContainer() {
     <Main>
       <ModalComponent setShow={setShow} show={show} productData={productData}/>
         <Header>
-            <H1>Ali's Fantasy Shop</H1>
+            <H1 className='title'>Ali's Fantasy Shop</H1>
         </Header>
         <NavBar setView = {setView} changeViewAll={changeViewAll} changeViewWeapons ={changeViewWeapons} changeViewPots = {changeViewPots} changeViewArmour = {changeViewArmour} setShow={setShow}/>
          <ListContainer allProducts = {productData} setView = {setView} view ={view} weaponsData = {weaponsData} potionsData = {potionsData} armoursData ={armoursData} filtered={filtered} changeViewAll={changeViewAll} changeViewWeapons ={changeViewWeapons} changeViewPots = {changeViewPots} changeViewArmour = {changeViewArmour} show={show} setShow={setShow}/>
@@ -70,7 +70,6 @@ function MainContainer() {
 };
 const Header = styled.header`
     display: flex;
-    font-family: fantasy, sans-serif;
     justify-content: center;
     background-image: url(${image});
     background-size: cover;
@@ -87,9 +86,7 @@ const Main = styled.div`
 const H1 = styled.h1`
   margin: 0;
   padding: 20px;
-  font-size: 3rem;
-  font-weight: bold;
-  color: white;
+  
 `
 
 export default MainContainer;

@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Calligraffitti');
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
 
 
 body {
@@ -16,5 +17,12 @@ input {
   font-family: 'Noto Sans', sans-serif;
   font-weight: bold;
   font-style: italic;
+  color: white;
+}
+
+.title {
+  font-family: 'Permanent Marker', sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
   color: white;
 }
