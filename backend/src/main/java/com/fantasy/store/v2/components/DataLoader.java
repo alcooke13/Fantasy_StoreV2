@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Profile("!test")
-//@Component
+@Component
 public class DataLoader implements ApplicationRunner {
 
     @Autowired
@@ -34,7 +34,7 @@ public class DataLoader implements ApplicationRunner {
 
         Manufacturer manufacturerBlacksmith = new Manufacturer("Dwarf's Finest", "Blacksmith");
         Manufacturer manufacturerAlchemist = new Manufacturer("The Old Wise Sage", "Alchemist");
-        Manufacturer manufacturerArmorist = new Manufacturer("Armor Tailor", "Armorsmith");
+        Manufacturer manufacturerArmorist = new Manufacturer("Good Guy Orc", "Armorsmith");
 
         manufacturerRepository.save(manufacturerBlacksmith);
         manufacturerRepository.save(manufacturerAlchemist);
