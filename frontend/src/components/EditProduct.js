@@ -97,13 +97,13 @@ function EditProduct({chosenProduct, changeViewWeapons, changeViewPots, changeVi
                 <option value="Armor" >Armour</option>
             </select>
             <label htmlFor="productName" >Product Name: </label>
-            <input type='text' onChange={handleNameInputChange} defaultValue={chosenProduct.name} value={nameInput}></input>
+            <input type='text' onChange={handleNameInputChange} value={nameInput}></input>
             <label htmlFor='cost' >Cost:</label>
-            <input type='number' onChange={handleCostChange} defaultValue={chosenProduct.cost} value={costInput}></input>
+            <input type='number' onChange={handleCostChange}  value={costInput}></input>
             <label>Price:</label>
-            <input type='number' onChange={handlePriceChange} defaultValue={chosenProduct.price} value={priceInput}></input>
+            <input type='number' onChange={handlePriceChange} value={priceInput}></input>
             <label>Description: </label>
-            <textarea onChange={handleDescriptionChange} rows={4} cols={40} defaultValue={chosenProduct.description} value={descriptionInput}></textarea>
+            <textarea onChange={handleDescriptionChange} rows={4} cols={40} value={descriptionInput}></textarea>
             
         </Form>
         <Button type='submit' onClick={handleFormSubmit}>Edit</Button>

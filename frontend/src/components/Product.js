@@ -15,7 +15,7 @@ import strengthPotionImage from '../images/strength_potion_pic.png'
 import lightArmorImage from '../images/light_armor.png'
 import mediumArmorImage from '../images/medium_armor.png'
 import heavyArmorImage from '../images/heavy_armor.png'
-import genericWeaponImage from '../images/weapon_picture.jpeg'
+import genericWeaponImage from '../images/generic_weapon.jpg'
 import genericPotionImage from '../images/potion_pic.jpeg'
 import genericArmourImage from '../images/armor_pic.png'
 
