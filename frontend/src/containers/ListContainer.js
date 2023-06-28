@@ -73,8 +73,8 @@ function ListContainer({allProducts, view, setView, weaponsData, potionsData, ar
             <SingleContainer>
                 {singleProduct}
                 <ButtonContainer>
-                    <EditButton type='button' onClick={() => setView("edit")}>Edit</EditButton>
-                    <DeleteButton type='button' onClick={handleDeleteProduct}>Delete</DeleteButton>
+                    <button className='button edit-button' onClick={() => setView("edit")}>Edit</button>
+                    <button className='button delete-button' onClick={handleDeleteProduct}>Delete</button>
                 </ButtonContainer>
             </SingleContainer> : ""}
 
@@ -120,52 +120,5 @@ const ButtonContainer = styled.div`
     gap: 1em;
 
 `
-
-const DeleteButton = styled.button`
-    margin-top: 5%;
-    margin-bottom: 5%;
-    background-color: hsl(0, 60%, 50%);
-    border: none;
-    min-height: 40px;
-    min-width: 100px;
-    border-radius: 0.3em;
-    font-size: 1em;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    font-style: italic;
-    color: white;
-  
-
-  cursor: pointer;
-  &:hover {
-    background-color: hsl(0, 60%, 60%);
-
-  }
-
-
-`
-
-const EditButton = styled.button`
-    margin-top: 5%;
-    margin-bottom: 5%;
-    background-color: rgb(9, 9, 78);;
-    border: none;
-    min-height: 40px;
-    min-width: 100px;
-    border-radius: 0.3em;
-    font-size: 1em;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    font-style: italic;
-    color: white;
-  
-
-  cursor: pointer;
-  &:hover {
-    background-color:hsl(249, 85%, 60%)
-
-  }
-`
-
 
 export default ListContainer;

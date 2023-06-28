@@ -12,6 +12,10 @@ input {
     font-family: inherit;
 }
 
+h3 {
+  font-size: 2rem
+}
+
 .nav-bar {
   font-size: 1em;
   font-family: 'Noto Sans', sans-serif;
@@ -25,4 +29,39 @@ input {
   font-size: 3rem;
   font-weight: bold;
   color: white;
+}
+
+/* Buttons */
+
+.button {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  border: none;
+  border-radius: 0.3em;
+  min-height: 40px;
+  min-width: 100px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-style: italic;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Same effect for closing Modal */
+.delete-button {
+  background-color: hsl(0, 60%, 50%);
+}
+
+.delete-button:hover, .delete-button:focus {
+  background-color: hsl(0, 60%, 60%);
+}
+
+/* Same effect for New product */
+.edit-button {
+  background-color: rgb(9, 9, 78);
+}
+
+.edit-button:hover, .edit-button:focus {
+  background-color:hsl(249, 85%, 60%);
 }
