@@ -48,8 +48,8 @@ function Product({product, setChosenProduct, index, setView, view}) {
     <>
     <Li onClick={chooseProduct}>
        
-            <ProductDetails>
-            <H3>{product.productName}</H3>
+            <div>
+            <h3>{product.productName}</h3>
             
             {view === "single" ? <Details>
                 Manufacturer : {product.manufacturer.manufacturerName}
@@ -69,7 +69,7 @@ function Product({product, setChosenProduct, index, setView, view}) {
             
             
             {view === "single" ? <Details>{product.description}</Details> : <Details>{product.description.slice(0, 20) + '...'}</Details>}
-            </ProductDetails>
+            </div>
             {/* new / edited product input matches options and matches their product type  */}
 
             {productName === "bronze sword" && productTypeName === "weapons" ? <Img src={bronzeSwordImage} alt='Picture of Bronze Sword'/> : ""}
@@ -125,22 +125,9 @@ const Li = styled.li`
         min-width: 129px;
 
     }
-
-
-`
-
-
-const ProductDetails = styled.div`
-    
-`
-
-const H3 = styled.h3`
-    font-size: 2rem;
-    /* font-family: fantasy, sans-serif; */
 `
 
 const Details = styled.div`
-    /* font-family: fantasy, sans-serif; */
     font-size: 1.3rem;
 `
 

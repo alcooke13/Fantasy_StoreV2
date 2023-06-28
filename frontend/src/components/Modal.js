@@ -44,7 +44,7 @@ function ModalComponent({show, setShow, productData}) {
            {productStock}
         </ModalBody>
         <ModalFooter>
-            <Button onClick={() => setShow(false)}>Close</Button>
+            <button className='button delete-button' onClick={() => setShow(false)}>Close</button>
         </ModalFooter>
         </ModalContent>
     </Modal>
@@ -96,24 +96,5 @@ const Li = styled.li`
     font-size: 0.9em;
     margin: 0.5em;
 `
-
-const Button = styled.button`
-  background-color: hsl(0, 60%, 50%);
-  border: none;
-  min-height: 40px;
-  min-width: 100px;
-  border-radius: 0.3em;
-  font-size: 1em;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  font-style: italic;
-  color: white;
-  
-  cursor: pointer;
-  &:hover {
-    background-color:hsl(0, 60%, 60%);
-
-  }
-  `
 
 export default ModalComponent;

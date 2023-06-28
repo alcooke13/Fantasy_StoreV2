@@ -106,7 +106,7 @@ function EditProduct({chosenProduct, changeViewWeapons, changeViewPots, changeVi
             <textarea onChange={handleDescriptionChange} rows={4} cols={40} value={descriptionInput}></textarea>
             
         </Form>
-        <Button type='submit' onClick={handleFormSubmit}>Edit</Button>
+        <button className='button edit-button'onClick={handleFormSubmit}>Edit</button>
         </Container>
   
   )
